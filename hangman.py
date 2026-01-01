@@ -1,5 +1,5 @@
 # Imports random word generator
-from random_word import RandomWords
+from wonderwords import RandomWord
 
 # Main game function
 def hangman_game():
@@ -12,8 +12,8 @@ def hangman_game():
      print(rules)
 
      # Computer chooses the word
-     d = RandomWords()
-     word = d.get_random_word()
+     d = RandomWord()
+     word = d.word()
      while word is None or not word.isalpha():
            word = d.get_random_word()
 
@@ -156,4 +156,5 @@ def hangman_game():
           
 
 if __name__ == "__main__":
+
      hangman_game()
