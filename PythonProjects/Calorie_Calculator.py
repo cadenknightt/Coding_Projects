@@ -232,7 +232,7 @@ def calculate_calorie_goal():
 
 # Runs the calcualtion program and ends with prompt allowing user to continue or not.   
 while True:
-          calculate_again = input("\nWould you like to play again? (y/n): ").strip().lower()
+          calculate_again = input("\nWould you like to calculate again? (y/n): ").strip().lower()
           if calculate_again in ["yes", "y"]:
                calculate_calorie_goal()
           elif calculate_again in ["no", "n"]:
