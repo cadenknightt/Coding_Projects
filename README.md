@@ -1,4 +1,4 @@
-<h1>Welcome to my Coding Projects Portfolio Page!</h1>
+<h1>Welcome to my Coding Projects Portfolio!</h1>
 Here you are able to access the many projects I have been working on with Python, HTML/CSS, and JavaScript.
 
 <h2>Recent Projects</h2>  
