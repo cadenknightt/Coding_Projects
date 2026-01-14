@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Random Number Generator</title>
+     <link rel="stylesheet" href="randomNumber.css">
+</head>
+<body>
+     <div id="gridContainerLayout">
+          <div class="container">
+               <span class="messageBox"></span>
+               <div id="min_maxValues">
+                    <div class="inputContainer">
+                         <label for="minNumber" class="numLabel">MIN</label>
+                         <input type="text" id="minNumber" placeholder="0" min="-99999" max="99999">
+                    </div>
+                    <div class="inputContainer">
+                         <label for="maxNumber" class="numLabel">MAX</label>
+                         <input type="text" id="maxNumber" placeholder="0" min="-99999" max="99999">
+                    </div>
+               </div>
+          <span id="randomNumber"></span>
+          <button id="randomButton" onclick="randomNumber()">GENERATE NUMBER</button>
+          </div>
+     </div>
+     <script src="randomNumber.js"></script>
+</body>
+</html>
