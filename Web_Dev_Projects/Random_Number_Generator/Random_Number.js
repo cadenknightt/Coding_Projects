@@ -4,21 +4,22 @@ const randomNumber = () => {
      const minInput = document.getElementById('minNumber');
      const maxInput = document.getElementById('maxNumber');
      const messageBox = document.querySelector('.messageBox');
-     const result = document.getElementById('randomNumber');
+     const result = document.querySelector('#gridContainerLayout .randomNumber');
      const container = document.querySelector('#gridContainerLayout .container');
+     const inputContainer = document.querySelector('.min_maxValues');
 
      // Reset prevoius CSS:
      if (messageBox) {
           messageBox.textContent = "";
           messageBox.classList.remove('messageBoxVisible');
      }
-     if (container) {
-          container.classList.remove('containerUpdate', 'containerWarning');
-     }
+     if (container) container.classList.remove('containerUpdate', 'containerWarning');
+     if (inputContainer) inputContainer.classList.remove('min_maxValuesWarning');
+     if (result) result.classList.remove('randomNumberHidden');
 
      // Get and clean values if not NULL:
-     const minVal = minInput?.value.trim() ?? '';
-     const maxVal = maxInput?.value.trim() ?? '';
+     const minVal = (minInput?.value || '').replace(/,/g, '').trim();
+     const maxVal = (maxInput?.value || '').replace(/,/g, '').trim();
 
      // If either MIN or MAX is empty:
      if (!minVal || !maxVal) {
@@ -27,13 +28,25 @@ const randomNumber = () => {
                messageBox.classList.add('messageBoxVisible');
           }
           if (container) container.classList.add('containerWarning');
-          if (result) result.style.opacity = "0";
+          if (inputContainer) inputContainer.classList.add('min_maxValuesWarning');
+          if (result) result.classList.add('randomNumberHidden');
           return;
      }
 
      // Convert input to numbers:
      const min = Number(minVal);
      const max = Number(maxVal);
+
+     if (isNaN(min) || isNaN(max)) {
+          if (messageBox) {
+               messageBox.textContent = "VALUES MUST BE NUMBERS";
+               messageBox.classList.add('messageBoxVisible');
+          }
+          if (container) container.classList.add('containerWarning');
+          if (inputContainer) inputContainer.classList.add('min_maxValuesWarning');
+          if (result) result.classList.add('randomNumberHidden');
+          return;
+     }
 
      // If length of both MIN and MAX are greater than 99999:
      if (min > 99999 || max > 99999) {
@@ -42,7 +55,8 @@ const randomNumber = () => {
                messageBox.classList.add('messageBoxVisible');
           }
           if (container) container.classList.add('containerWarning');
-          if (result) result.style.opacity = "0";
+          if (inputContainer) inputContainer.classList.add('min_maxValuesWarning');
+          if (result) result.classList.add('randomNumberHidden');
           return;
      }
 
@@ -53,18 +67,20 @@ const randomNumber = () => {
                messageBox.classList.add('messageBoxVisible');
           }
           if (container) container.classList.add('containerWarning');
-          if (result) result.style.opacity = "0";
+          if (inputContainer) inputContainer.classList.add('min_maxValuesWarning');
+          if (result) result.classList.add('randomNumberHidden');
           return;
      }
 
      // If MIN is smaller than MAX:
      if (min > max) {
           if (messageBox) {
-               messageBox.textContent = `'${min}' MUST BE SMALLER THAN '${max}'`;
+               messageBox.textContent = `'MIN' MUST BE SMALLER THAN '${max}'`;
                messageBox.classList.add('messageBoxVisible');
           }
           if (container) container.classList.add('containerWarning');
-          if (result) result.style.opacity = "0";
+          if (inputContainer) inputContainer.classList.add('min_maxValuesWarning');
+          if (result) result.classList.add('randomNumberHidden');
           return;
      }
      
@@ -75,7 +91,8 @@ const randomNumber = () => {
                messageBox.classList.add('messageBoxVisible');
           }
           if (container) container.classList.add('containerWarning');
-          if (result) result.style.opacity = "0";
+          if (inputContainer) inputContainer.classList.add('min_maxValuesWarning');
+          if (result) result.classList.add('randomNumberHidden');
           return;
      }
 
@@ -87,7 +104,24 @@ const randomNumber = () => {
      // If all checks are clear run these:
      if (result) {
           result.textContent = formattedNum;
-          result.style.opacity = "1";
+          result.classList.add('randomNumber');
      }
      if (container) container.classList.add('containerUpdate');
 };
+
+// Add Cleave.js formatting for the input to use thousand places
+document.addEventListener('DOMContentLoaded', () => {
+    new Cleave('#minNumber', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralPositiveOnly: false,
+        numeralDecimalScale: 0,
+    });
+
+    new Cleave('#maxNumber', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        numeralPositiveOnly: false,
+        numeralDecimalScale: 0,
+    });
+});
