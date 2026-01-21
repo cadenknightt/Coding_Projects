@@ -4,12 +4,12 @@ Here you are able to access the many projects I have been working on with Python
 <h2>Recent Projects</h2>  
 
 * [Random Number Generator](Web_Dev_Projects/Random_Number_Generator)
-* [Hangman Game](Python_Projects/Hangman_Game.py)
-* [Guess the Number Game](Python_Projects/Guess_The_Number_Game.py)
-* [Calorie Calculator](Python_Projects/Calorie_Calculator.py)
+* [Hangman Game](Python_Projects/Hangman_Game)
+* [Guess the Number Game](Python_Projects/Guess_The_Number_Game)
+* [Calorie Calculator](Python_Projects/Calorie_Calculator)
 
 <h2>Upcoming Projects</h2>  
 
 * Authentication System (WEB)
-* Business Website (WEB) 
+* Business Website (WEB)
 * Secure Password Generator (PYTHON)
