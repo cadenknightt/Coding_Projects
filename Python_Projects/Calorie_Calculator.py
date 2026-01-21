@@ -210,7 +210,7 @@ def calculate_calories():
                                    print("Number must be greater than 500.\n")
                                    continue
                               # Display error when the number is greater than 800:
-                              elif intakenum > 750:
+                              elif intakenum > 800:
                                    print("Number must be less than 800.\n")
                                    continue
                          # If number is not an integer:
